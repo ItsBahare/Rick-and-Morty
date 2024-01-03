@@ -1,10 +1,10 @@
 import { EyeIcon } from "@heroicons/react/24/solid";
-import { allCharacters } from "../../data/data";
-function CategoryList() {
+
+function CategoryList({ allCharacter }) {
   return (
     <>
       <div className="category-list">
-        {allCharacters.map((a) => (
+        {allCharacter.map((a) => (
           <CategoryItem key={a.id} a={a} />
         ))}
       </div>

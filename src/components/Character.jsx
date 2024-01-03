@@ -26,30 +26,25 @@ function Character() {
           </div>
         </div>
       </div>
-      <ListOfEpisodes episodes={episodes} />
+
+      <div className="list-of-epis">
+        <div className="list-of-epi">
+          <h2 className="title-epi">List Of Episodes:</h2>
+          <button>
+            <ArrowDownCircleIcon className="arrow-icon" />
+          </button>
+        </div>
+        <div>
+          {episodes.map((n, index) => (
+            <Episodes key={n.id} n={n} index={index} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
 export default Character;
-
-function ListOfEpisodes({ episodes }) {
-  return (
-    <div className="list-of-epis">
-      <div className="list-of-epi">
-        <h2 className="title-epi">List Of Episodes:</h2>
-        <button>
-          <ArrowDownCircleIcon className="arrow-icon" />
-        </button>
-      </div>
-      <div>
-        {episodes.map((n, index) => (
-          <Episodes key={n.id} n={n} index={index} />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function Episodes({ n, index }) {
   return (
