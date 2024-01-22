@@ -5,25 +5,36 @@ import CategoryList from "./components/CategoryList";
 import Character from "./components/Character";
 import Navbar from "./components/Navbar";
 import Loading from "./components/Loading";
+import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 function App() {
   const [allCharacter, setAllCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    setIsLoading(true);
     async function fetchData() {
-      const res = await fetch("https://rickandmortyapi.com/api/character");
-      const data = await res.json();
-      setAllCharacter(data.results.slice(0, 6));
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(
+          `https://rickandmortyapi.com/api/character?name=${search}`,
+        );
+        setAllCharacter(data.results.slice(0, 6));
+      } catch (err) {
+        setAllCharacter([]);
+        toast.error(err.response.data.error);
+      } finally {
+        setIsLoading(false);
+      }
     }
     fetchData();
-    setIsLoading(false);
-  }, []);
+  }, [search]);
 
   return (
     <div>
-      <Navbar />
+      <Toaster />
+      <Navbar search={search} setSearch={setSearch} />
       <Main>
         {isLoading ? <Loading /> : <CategoryList allCharacter={allCharacter} />}
         <Character />

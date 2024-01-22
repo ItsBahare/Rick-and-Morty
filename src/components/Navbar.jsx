@@ -1,6 +1,6 @@
 // import Logo from "../components/Logo";
 import { HeartIcon } from "@heroicons/react/24/outline";
-function Navbar() {
+function Navbar({ search, setSearch }) {
   return (
     <div className="navbar-center">
       <div className="navbar">
@@ -11,6 +11,8 @@ function Navbar() {
           </li>
           <li className="navbar_item">
             <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               type="text"
               className="input input-search"
               placeholder="search ..."
