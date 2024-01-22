@@ -1,10 +1,14 @@
+// import Logo from "../components/Logo";
 import { HeartIcon } from "@heroicons/react/24/outline";
 function Navbar() {
   return (
     <div className="navbar-center">
       <div className="navbar">
         <ul className="navbar_list">
-          <li className="navbar_item">logo</li>
+          <li className="navbar_item">
+            {/* <Logo /> */}
+            logo
+          </li>
           <li className="navbar_item">
             <input
               type="text"

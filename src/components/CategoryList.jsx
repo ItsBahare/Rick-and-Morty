@@ -1,4 +1,4 @@
-import { EyeIcon } from "@heroicons/react/24/solid";
+import { EyeIcon } from "@heroicons/react/24/outline";
 
 function CategoryList({ allCharacter }) {
   return (

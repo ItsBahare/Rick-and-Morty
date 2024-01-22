@@ -4,7 +4,7 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 function Character() {
   return (
-    <div style={{ margin: "auto" }}>
+    <div>
       <div className="character-box">
         <div className="character-box_img">
           <img src={character.image} alt={character.id} />

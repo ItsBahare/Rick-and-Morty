@@ -224,7 +224,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding:1rem;
+  padding:0.3rem;
 }
 
 .epi-detail span {
@@ -240,6 +240,26 @@
   padding: 0.2rem;
 }
 
+/* LOADER SPINNER 
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+} */
+
+
+/* MEDIA QUERY */
 
 @media screen and (max-width:500px) {
   #root {
