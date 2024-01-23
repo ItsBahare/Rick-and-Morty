@@ -1,4 +1,8 @@
 function Loading() {
-  return <p>Data is Loading ... </p>;
+  return (
+    <p style={{ color: "var(--slate-200)" }}>
+      Data is Loading...<span className="loader"></span>
+    </p>
+  );
 }
 export default Loading;

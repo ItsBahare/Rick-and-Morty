@@ -1,4 +1,4 @@
-// import Logo from "../components/Logo";
+import Logo from "../components/Logo";
 import { HeartIcon } from "@heroicons/react/24/outline";
 function Navbar({ search, setSearch }) {
   return (
@@ -6,8 +6,8 @@ function Navbar({ search, setSearch }) {
       <div className="navbar">
         <ul className="navbar_list">
           <li className="navbar_item">
-            {/* <Logo /> */}
-            logo
+            <Logo />
+            {/* logo */}
           </li>
           <li className="navbar_item">
             <input

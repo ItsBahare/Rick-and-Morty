@@ -12,6 +12,7 @@ function App() {
   const [allCharacter, setAllCharacter] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -31,13 +32,24 @@ function App() {
     fetchData();
   }, [search]);
 
+  const handleEyeClick = (id) => {
+    setSelectedId((prevId) => (prevId === id ? null : id));
+  };
   return (
     <div>
       <Toaster />
       <Navbar search={search} setSearch={setSearch} />
       <Main>
-        {isLoading ? <Loading /> : <CategoryList allCharacter={allCharacter} />}
-        <Character />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <CategoryList
+            allCharacter={allCharacter}
+            handleEyeClick={handleEyeClick}
+            selectedId={selectedId}
+          />
+        )}
+        <Character selectedId={selectedId} />
       </Main>
     </div>
   );

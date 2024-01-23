@@ -1,11 +1,16 @@
-import { EyeIcon } from "@heroicons/react/24/outline";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
-function CategoryList({ allCharacter }) {
+function CategoryList({ allCharacter, handleEyeClick, selectedId }) {
   return (
     <>
       <div className="category-list">
         {allCharacter.map((a) => (
-          <CategoryItem key={a.id} a={a} />
+          <CategoryItem
+            key={a.id}
+            a={a}
+            handleEyeClick={handleEyeClick}
+            selectedId={selectedId}
+          />
         ))}
       </div>
     </>
@@ -14,7 +19,7 @@ function CategoryList({ allCharacter }) {
 
 export default CategoryList;
 
-function CategoryItem({ a }) {
+function CategoryItem({ a, handleEyeClick, selectedId }) {
   return (
     <>
       <div className="category_item" key={a.id}>
@@ -29,9 +34,13 @@ function CategoryItem({ a }) {
             <span>{a.status}-</span>
             <span>{a.species}</span>
           </div>
-          <p>
-            <EyeIcon className="icon eye" />
-          </p>
+          <button onClick={() => handleEyeClick(a.id)}>
+            {selectedId === a.id ? (
+              <EyeSlashIcon className="icon eye" />
+            ) : (
+              <EyeIcon className="icon eye" />
+            )}
+          </button>
         </div>
       </div>
     </>
