@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { episodes } from "../../data/data";
+// import { episodes } from "../../data/data";
 import Loading from "../components/Loading.jsx";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 function Character({ selectedId }) {
   const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [episode, setEpisode] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,6 +18,11 @@ function Character({ selectedId }) {
           `https://rickandmortyapi.com/api/character/${selectedId}`,
         );
         setCharacter(data);
+        const episodeId = data.episode.map((e) => e.split("/").at(-1));
+        const { data: episodeData } = await axios.get(
+          `https://rickandmortyapi.com/api/episode/${episodeId}`,
+        );
+        setEpisode([episodeData].flat());
       } catch (error) {
         toast.error(error.response.data.error);
       } finally {
@@ -66,8 +72,8 @@ function Character({ selectedId }) {
             <ArrowDownCircleIcon className="arrow-icon" />
           </button>
         </div>
-        <div>
-          {episodes.map((n, index) => (
+        <div style={{ height: "18rem", overflowY: "auto" }}>
+          {episode.map((n, index) => (
             <Episodes key={n.id} n={n} index={index} />
           ))}
         </div>

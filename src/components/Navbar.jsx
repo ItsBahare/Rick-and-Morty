@@ -20,7 +20,7 @@ function Navbar({ search, setSearch }) {
           </li>
           <button className="heart">
             <HeartIcon className="icon" />
-            <span className="badge">4</span>
+            <span className="badge">0</span>
           </button>
         </ul>
       </div>
