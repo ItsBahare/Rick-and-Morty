@@ -162,7 +162,7 @@
   align-items: flex-start;
 }
 
-.epi-detail{
+.epi-detail {
   padding: 0.5rem;
 }
 
@@ -188,7 +188,8 @@
     width: 80%;
     margin: 0.5rem;
   }
-  .list-of-epis{
+
+  .list-of-epis {
     margin: 0.5rem;
     width: 80%;
   }
@@ -196,35 +197,39 @@
 }
 
 @media screen and (min-width:973px) {
+
   /* #root {
     background-color: #fff;
   } */
-  .character-box{
+  .character-box {
     width: auto;
   }
 }
 
-.title-epi{
+.title-epi {
   color: var(--slate-400);
   padding: 1rem;
 }
-.arrow-icon{
+
+.arrow-icon {
   width: 1.5rem;
   cursor: pointer;
   outline: none;
   color: var(--slate-400);
 }
-.list-of-epis{
+
+.list-of-epis {
   background-color: var(--slate-800);
   margin-top: 2rem;
   border-radius: 1.5rem;
 }
-.list-of-epi{
+
+.list-of-epi {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding:0.3rem;
+  padding: 0.3rem;
 }
 
 .epi-detail span {
@@ -232,7 +237,8 @@
   padding: 0.1rem;
 
 }
-.badge-data{
+
+.badge-data {
   background-color: var(--slate-500);
   border-radius: 1rem;
   font-size: 0.9rem;
@@ -240,27 +246,33 @@
   padding: 0.2rem;
 }
 
+.action p {
+  margin-top: 1.5rem;
+  color: var(--slate-400);
+}
+
 /* LOADER SPINNER  */
 .loader {
-    width: 20px;
-    height: 20px;
-    border: 5px solid #FFF;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    margin-top: 1rem;
-    }
+  width: 20px;
+  height: 20px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin-top: 1rem;
+}
 
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* MEDIA QUERY */
 
@@ -290,24 +302,30 @@
     margin: 0.5rem;
     display: block;
   }
-  .character-box_details{
-    padding-left:0rem;
+
+  .character-box_details {
+    padding-left: 0rem;
   }
-  .name ,.info{
+
+  .name,
+  .info {
     text-align: center;
   }
 
   .favorite {
     margin-bottom: 1rem;
   }
-  .category-list{
+
+  .category-list {
     margin: auto;
   }
-  .list-of-epis{
+
+  .list-of-epis {
     margin: 0.5rem;
     width: auto;
   }
-  .list-of-epi{
+
+  .list-of-epi {
     flex-direction: column;
     padding: 0.5rem;
   }

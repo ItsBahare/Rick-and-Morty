@@ -5,7 +5,7 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-function Character({ selectedId }) {
+function Character({ selectedId, handleFavorites, isAddedToFavorite }) {
   const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [episode, setEpisode] = useState([]);
@@ -58,9 +58,18 @@ function Character({ selectedId }) {
             <span>{character.species}</span>
             <p className="status-location">Last known location:</p>
             <h4>{character.location.name}</h4>
-            <button className="favorite info">
-              <strong>Add to Favorite</strong>
-            </button>
+            <div className="action">
+              {isAddedToFavorite ? (
+                <p>Already Added To Favorites ✅</p>
+              ) : (
+                <button
+                  className="favorite info"
+                  onClick={() => handleFavorites(character)}
+                >
+                  <strong>add to your favorite</strong>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

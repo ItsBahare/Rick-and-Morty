@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-// import { allCharacters } from "../data/data";
 import "./App.css";
 import CategoryList from "./components/CategoryList";
 import Character from "./components/Character";
-import Navbar from "./components/Navbar";
+import Navbar, { HeartButton, InputSearch } from "./components/Navbar";
 import Loading from "./components/Loading";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
@@ -13,6 +12,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -35,11 +35,19 @@ function App() {
   const handleEyeClick = (id) => {
     setSelectedId((prevId) => (prevId === id ? null : id));
   };
+  const handleFavorites = (cha) => {
+    setFavorites((prev) => [...prev, cha]);
+  };
+
+  const isAddedToFavorite = favorites.map((i) => i.id).includes(selectedId);
 
   return (
     <div>
       <Toaster />
-      <Navbar search={search} setSearch={setSearch} />
+      <Navbar>
+        <InputSearch search={search} setSearch={setSearch} />
+        <HeartButton favorites={favorites} />
+      </Navbar>
       <Main>
         {isLoading ? (
           <Loading />
@@ -50,7 +58,11 @@ function App() {
             selectedId={selectedId}
           />
         )}
-        <Character selectedId={selectedId} />
+        <Character
+          selectedId={selectedId}
+          handleFavorites={handleFavorites}
+          isAddedToFavorite={isAddedToFavorite}
+        />
       </Main>
     </div>
   );
