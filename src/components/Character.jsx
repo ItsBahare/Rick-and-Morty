@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // import { episodes } from "../../data/data";
 import Loading from "../components/Loading.jsx";
-import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
+import { ArrowUpCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -9,6 +9,10 @@ function Character({ selectedId, handleFavorites, isAddedToFavorite }) {
   const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [episode, setEpisode] = useState([]);
+  const [sortBy, setSortBy] = useState(true);
+
+  let sortEpisodes;
+
 
   useEffect(() => {
     async function fetchData() {
@@ -41,48 +45,35 @@ function Character({ selectedId, handleFavorites, isAddedToFavorite }) {
       </div>
     );
 
+  if (sortBy) {
+    sortEpisodes = [...episode].sort(
+      (a, b) => new Date(a.created) - new Date(b.created),
+    );
+  } else {
+    sortEpisodes = [...episode].sort(
+      (a, b) => new Date(b.created) - new Date(a.created),
+    );
+  }
+
   return (
     <div>
-      <div className="character-box">
-        <div className="character-box_img">
-          <img src={character.image} alt={character.id} />
-        </div>
-        <div className="character-box_details">
-          <h3 className="name">
-            <span>{character.gender === "Male" ? "🧑🏻" : "👩🏻"}</span>
-            <span>{character.name}</span>
-          </h3>
-          <div className="status info">
-            <span>{character.status === "Dead" ? "🔴" : "🟢"}</span>
-            <span>{character.status}-</span>
-            <span>{character.species}</span>
-            <p className="status-location">Last known location:</p>
-            <h4>{character.location.name}</h4>
-            <div className="action">
-              {isAddedToFavorite ? (
-                <p>Already Added To Favorites ✅</p>
-              ) : (
-                <button
-                  className="favorite info"
-                  onClick={() => handleFavorites(character)}
-                >
-                  <strong>add to your favorite</strong>
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="list-of-epis">
+      <CharacterInfo
+        character={character}
+        handleFavorites={handleFavorites}
+        isAddedToFavorite={isAddedToFavorite}
+      />
+      <div className="episodes">
         <div className="list-of-epi">
-          <h2 className="title-epi">List Of Episodes:</h2>
-          <button>
-            <ArrowDownCircleIcon className="arrow-icon" />
+          <h2>List Of Episodes:</h2>
+          <button onClick={() => setSortBy((is) => !is)}>
+            <ArrowUpCircleIcon
+              className="arrow-icon"
+              style={{ rotate: sortBy ? "0deg" : "180deg" }}
+            />
           </button>
         </div>
         <div style={{ height: "18rem", overflowY: "auto" }}>
-          {episode.map((n, index) => (
+          {sortEpisodes.map((n, index) => (
             <Episodes key={n.id} n={n} index={index} />
           ))}
         </div>
@@ -92,6 +83,41 @@ function Character({ selectedId, handleFavorites, isAddedToFavorite }) {
 }
 
 export default Character;
+
+function CharacterInfo({ character, isAddedToFavorite, handleFavorites }) {
+  return (
+    <div className="character-box">
+      <div className="character-box_img">
+        <img src={character.image} alt={character.id} />
+      </div>
+      <div className="character-box_details">
+        <h3 className="name">
+          <span>{character.gender === "Male" ? "🧑🏻" : "👩🏻"}</span>
+          <span>{character.name}</span>
+        </h3>
+        <div className="status info">
+          <span>{character.status === "Dead" ? "🔴" : "🟢"}</span>
+          <span>{character.status}-</span>
+          <span>{character.species}</span>
+          <p className="status-location">Last known location:</p>
+          <h4>{character.location.name}</h4>
+          <div className="action">
+            {isAddedToFavorite ? (
+              <p>Already Added To Favorites ✅</p>
+            ) : (
+              <button
+                className="favorite info"
+                onClick={() => handleFavorites(character)}
+              >
+                <strong>add to your favorite</strong>
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Episodes({ n, index }) {
   return (

@@ -167,6 +167,29 @@
 }
 
 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--slate-400); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-400); 
+
+}
+
 @media screen and (min-width:500px) and (max-width:973px) {
 
   #root {
@@ -189,7 +212,7 @@
     margin: 0.5rem;
   }
 
-  .list-of-epis {
+  .episodes {
     margin: 0.5rem;
     width: 80%;
   }
@@ -206,7 +229,7 @@
   }
 }
 
-.title-epi {
+.list-of-epi>h2 {
   color: var(--slate-400);
   padding: 1rem;
 }
@@ -218,7 +241,7 @@
   color: var(--slate-400);
 }
 
-.list-of-epis {
+.episodes {
   background-color: var(--slate-800);
   margin-top: 2rem;
   border-radius: 1.5rem;
@@ -273,6 +296,56 @@
     transform: rotate(360deg);
   }
 }
+/* MODAL */
+
+.modal {
+  width: 98%;
+  min-height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--slate-900);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 50px var(--slate-600);
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--slate-600);
+}
+.modal__header .close {
+  color: var(--rose-500);
+}
+
+.modal__header .title {
+  color: var(--slate-200);
+}
+
+@media (min-width: 768px) {
+  .modal {
+    max-width: 30rem;
+  }
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(63, 69, 76, 0.8);
+}
+
+
+
+
+
+
 
 /* MEDIA QUERY */
 
@@ -320,7 +393,7 @@
     margin: auto;
   }
 
-  .list-of-epis {
+  .episodes {
     margin: 0.5rem;
     width: auto;
   }

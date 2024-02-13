@@ -10,7 +10,15 @@ function CategoryList({ allCharacter, handleEyeClick, selectedId }) {
             a={a}
             handleEyeClick={handleEyeClick}
             selectedId={selectedId}
-          />
+          >
+            <button onClick={() => handleEyeClick(a.id)}>
+              {selectedId === a.id ? (
+                <EyeSlashIcon className="icon eye" />
+              ) : (
+                <EyeIcon className="icon eye" />
+              )}
+            </button>
+          </CategoryItem>
         ))}
       </div>
     </>
@@ -19,30 +27,34 @@ function CategoryList({ allCharacter, handleEyeClick, selectedId }) {
 
 export default CategoryList;
 
-function CategoryItem({ a, handleEyeClick, selectedId }) {
+export function CategoryItem({ a, children }) {
   return (
     <>
-      <div className="category_item" key={a.id}>
+      <div className="category_item">
         <div className="category_item__list">
           <img src={a.image} alt={a.id} />
-          <h3 className="name">
-            <span>{a.gender === "Male" ? "🧑🏻" : "👩🏻"}</span>
-            <span>{a.name}</span>
-          </h3>
-          <div className=" list-item__info info">
-            <span>{a.status === "Dead" ? "🔴" : "🟢"}</span>
-            <span>{a.status}-</span>
-            <span>{a.species}</span>
-          </div>
-          <button onClick={() => handleEyeClick(a.id)}>
-            {selectedId === a.id ? (
-              <EyeSlashIcon className="icon eye" />
-            ) : (
-              <EyeIcon className="icon eye" />
-            )}
-          </button>
+          <Name a={a} />
+          <StatusCharacter a={a} />
+          {children}
         </div>
       </div>
     </>
+  );
+}
+function Name({ a }) {
+  return (
+    <h3 className="name">
+      <span>{a.gender === "Male" ? "🧑🏻" : "👩🏻"}</span>
+      <span>{a.name}</span>
+    </h3>
+  );
+}
+function StatusCharacter({ a }) {
+  return (
+    <div className=" list-item__info info">
+      <span>{a.status === "Dead" ? "🔴" : "🟢"}</span>
+      <span>{a.status}-</span>
+      <span>{a.species}</span>
+    </div>
   );
 }
