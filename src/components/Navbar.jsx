@@ -42,7 +42,7 @@ export function HeartButton({ favorites, handleDeleteFavorite }) {
       <Modal onOpen={setIsOpen} open={isOpen} title="List of Favorites">
         {favorites.map((a) => (
           <>
-            <CategoryItem a={a} key={a.id + 1}>
+            <CategoryItem a={a} key={a.id}>
               <button
                 className="icon eye"
                 onClick={() => handleDeleteFavorite(a.id)}

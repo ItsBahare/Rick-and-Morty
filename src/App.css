@@ -192,10 +192,6 @@
 
 @media screen and (min-width:500px) and (max-width:973px) {
 
-  #root {
-    background-color: blueviolet;
-  }
-
   .character-box_img img {
     width: 100%;
     border-radius: 1rem;
@@ -220,10 +216,6 @@
 }
 
 @media screen and (min-width:973px) {
-
-  /* #root {
-    background-color: #fff;
-  } */
   .character-box {
     width: auto;
   }
@@ -342,17 +334,9 @@
 }
 
 
-
-
-
-
-
 /* MEDIA QUERY */
 
 @media screen and (max-width:500px) {
-  #root {
-    background-color: red;
-  }
 
   .character-box_img img {
     width: 94%;
@@ -368,10 +352,8 @@
   }
 
   .character-box {
-    /* grid-template-columns: 1fr 1.5fr; */
     width: 90%;
     justify-items: center;
-    /* align-items: center; */
     margin: 0.5rem;
     display: block;
   }

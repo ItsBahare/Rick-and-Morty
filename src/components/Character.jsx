@@ -13,7 +13,6 @@ function Character({ selectedId, handleFavorites, isAddedToFavorite }) {
 
   let sortEpisodes;
 
-
   useEffect(() => {
     async function fetchData() {
       try {
