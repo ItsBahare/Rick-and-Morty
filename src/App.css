@@ -126,7 +126,6 @@
 }
 
 .character-box_details {
-  /* background-color: blue; */
   grid-column: 2/3;
   grid-row: 1/3;
   margin-top: 0.5rem;
@@ -195,7 +194,7 @@
   .character-box_img img {
     width: 100%;
     border-radius: 1rem;
-    margin: 0.5rem;
+    margin: 0 auto;
   }
 
   .list {
@@ -385,4 +384,8 @@
     padding: 0.5rem;
   }
 
+}
+.character-box,.episodes{
+  margin: 0 auto;
+  margin-top: 0.5rem;
 }
